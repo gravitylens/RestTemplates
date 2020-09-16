@@ -1,3 +1,4 @@
+#Make the URL global since it will likely be consistent between all Rest methods
 $global:url="https://my.app.local":
 $global:headers=@{"Content-Type","application/json"}
 
@@ -21,12 +22,12 @@ function FunctionName {
     )
     
     BEGIN{                          #Execute one time before looking at inputs
-        $uri="$url/API/method"      #Complete the URI
-        $method="POST"              #HTTP Verb
+        $uri="$url/API/method"      #Append URI to the URL to identify the specific Rest Method
+        $method="POST"              #HTTP Verb for the Rest Method
     }
 
-PROCESS{                            #Do this once for each input
-        $body=@{                    #Assemble body from parameters
+    PROCESS{                            #Do this once for each input
+            $body=@{                    #Assemble body from parameters
             "Attribute1" = $Param1
             "Attribute2" = $Param2
         } | ConvertTo-Json          #Convert to JSON for Rest
@@ -41,5 +42,9 @@ PROCESS{                            #Do this once for each input
         }
         #Return Rest response or error message as necessary.
         return $response;
+    }
+    
+    END{
+        #Execute one time after looking at inputs
     }
 }
