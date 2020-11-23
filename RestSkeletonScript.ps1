@@ -1,7 +1,8 @@
 ##RestAPI Skeleton Script##
 
 #Create a global header with Content-Type header
-$global:headers = @{"Content-Type"="application/json"}
+$global:headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+$global:headers.Add("Content-Type", "application/json")
 
 #BaseURL of the Application
 $global:url="https://my.app.local"
