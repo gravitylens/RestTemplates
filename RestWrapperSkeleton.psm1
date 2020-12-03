@@ -38,7 +38,14 @@ function FunctionName {
         }
         CATCH{
             #If the Rest Method fails, assign an appropriate error message to $response
-            $response="An Error Has Occured"
+            $response = "ErrorCode: " + $_.Exception.Response.StatusCode.value__ + "`n"
+            $response += "Uri: " + $uri + "`n"
+            $response += "Method: " + $method + "`n"
+            $response += "Body: " + $body + "`n"
+            $response += "Headers: `n"# + $headers.GetEnumerator() | ForEach-Object { $_.Value }
+            foreach ($key in $headers.Keys) { 
+                $response += "$key -> $($headers[$key])`n" 
+            } 
         }
         #Return Rest response or error message as necessary.
         return $response;
