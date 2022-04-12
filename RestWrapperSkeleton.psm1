@@ -1,6 +1,7 @@
 #Make the URL global since it will likely be consistent between all Rest methods
-$global:url="https://my.app.local":
-$global:headers=@{"Content-Type","application/json"}
+$global:headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+$global:headers.Add("Content-Type", "application/json")
+$global:url = "https://pvwa.acme.corp"
 
 function FunctionName {
     param (
