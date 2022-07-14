@@ -24,7 +24,7 @@ $body=@{
     )
 } | ConvertTo-json
 
-#Invoke the RestMethod.  The Response will contain the Authorization Key
+#Invoke the RestMethod.
 $response = Invoke-RestMethod -uri $uri -Method $verb -Headers $headers -Body $body
 
 write-host $response
