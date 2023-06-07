@@ -1,19 +1,15 @@
 ##RestAPI Skeleton Script##
 
-#Create a global header with Content-Type header
-$global:headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-$global:headers.Add("Content-Type", "application/json")
+# Headers
+$headers = @{"content-type" = "application/json"}
 
-#BaseURL of the Application
-$global:url="https://my.app.local"
+# URI
+$uri="$https://pvwa.cyberark.local/api/Method"
 
-#URI of Rest Method
-$uri="$url/api/Method"
+# HTTP Verb
+$method="POST"
 
-#HTTP Verb
-$verb="POST"
-
-#Form the body of the request
+# Body
 $body=@{
     key1 = "Value"
     key2 = "Value"
@@ -24,7 +20,8 @@ $body=@{
     )
 } | ConvertTo-json
 
-#Invoke the RestMethod.
-$response = Invoke-RestMethod -uri $uri -Method $verb -Headers $headers -Body $body
+# Invoke the RestMethod.
+$response = Invoke-RestMethod -uri $uri -Method $method -Headers $headers -Body $body
 
+# Do something with the result
 write-host $response
