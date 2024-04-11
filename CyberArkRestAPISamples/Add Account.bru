@@ -1,0 +1,37 @@
+meta {
+  name: Add Account
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{BaseURL}}/PasswordVault/api/Accounts
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: {{AuithorizationToken}}
+}
+
+body:json {
+  {
+    "name": "string",
+    "address": "string",
+    "userName": "string",
+    "platformId": "string",
+    "safeName": "string",
+    "secretType": "key",
+    "secret": "string",
+    "platformAccountProperties": {},
+    "secretManagement": {
+      "automaticManagementEnabled": true,
+      "manualManagementReason": "string"
+    },
+    "remoteMachinesAccess": {
+      "remoteMachines": "string",
+      "accessRestrictedToRemoteMachines": true
+    }
+  }
+}

@@ -1,0 +1,31 @@
+meta {
+  name: Request PSM Session
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{BaseURL}}/PasswordVault/API/Accounts/{{AccountId}}/PSMConnect/
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: {{AuthorizationToken}}
+}
+
+body:json {
+  {
+    "reason": "<Reason>",
+    "TicketingSystemName": "<Ticketing system>",
+    "TicketId": "<Ticketid>",
+    "ConnectionComponent": "<Connection component id>",
+    "ConnectionParams": {
+      "<Connection parameter name>": {
+        "value": "<Connection parameter value>",
+        "ShouldSave": <true\false>
+      }
+    }
+  }
+}

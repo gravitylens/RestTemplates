@@ -1,0 +1,29 @@
+meta {
+  name: Add Safe
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{BaseURL}}/PasswordVault/API/Safes/
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: {{AuthorizationToken}}
+}
+
+body:json {
+  {
+    "numberOfDaysRetention": 7,
+    "numberOfVersionsRetention": null,
+    "oLACEnabled": true,
+    "autoPurgeEnabled": true,
+    "managingCPM": "passwordManager",
+    "safeName": "{{SafeName}}",
+    "description": "This is PasswordManager safe.",
+    "location": ""
+  }
+}
